@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Person>
+
+@{
+}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: antiquewhite;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<h3>Employees list</h3>
+
+<div class="body">
+    <div class="my-2">
+        <a href="/Person/Add" class="btn btn-info my-2">Add more Employees</a>
+
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Serial Number</th>
+                        <th>Employee Name</th>
+                        <th>Gender</th>
+                        <th>Employee DOB</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Mobile Number</th>
+                        <th>Email Id</th>
+                        <th>Pan No</th>
+                        <th>Aadhar No</th>
+                        <th>Date Of Issue</th>
+                        <th>Expiry Data</th>
+                        <th>Data Of Application</th>
+                        <th>DSC No</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var person in Model)
+                    {
+                        <tr>
+                            <td>@person.serialnumber</td>
+                            <td>@person.employeename</td>
+                            <td>@person.gender</td>
+                            <td>@person.employeedob</td>
+                            <td>@person.department</td>
+                            <td>@person.designation</td>
+                            <td>@person.mobilenumber</td>
+                            <td>@person.emailid</td>
+                            <td>@person.panno</td>
+                            <td>@person.aadharno</td>
+                            <td>@person.dateofissue</td>
+                            <td>@person.expirydata</td>
+                            <td>@person.dataofapplication</td>
+                            <td>@person.dscno</td>
+                            <td>@person.status</td>
+                            <td>
+                                <a href="/Person/Edit?id=@person.Id" class="btn btn-success">Edit</a>
+                                <a href="/Person/Delete?id=@person.Id" onclick="return window.confirm('Are You sure to delete this record?')" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

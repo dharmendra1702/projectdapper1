@@ -1,0 +1,205 @@
+﻿@model Person
+@{
+}
+<style>
+    body {
+        background-color: antiquewhite;
+    }
+</style>
+<h3>Update Employee</h3>
+
+<a href="/Person/DisplayAll" class="my-2 btn btn-primary">Display All</a>
+
+<div class="body">
+    <form asp-action="Add">
+        <input asp-for="Id" type="hidden" class="form-control">
+
+        <div class="mb-1">
+            <label asp-for="serialnumber " class="form-label">Serial Number </label>
+            <input asp-for="serialnumber " type="text" class="form-control">
+
+            <span class="text-danger" asp-validation-for="serialnumber"></span>
+        </div>
+
+        <div class="mb-2">
+            <label asp-for="employeename " class="form-label">Employee Name </label>
+            <input asp-for="employeename " type="text" class="form-control">
+
+            <span class="text-danger" asp-validation-for="employeename"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="gender " class="form-label">Gender</label>
+            <br />
+            <select id="dropdown" name="dropdown">
+                <option value="" style="display: none;">Select Gender</option>
+                <option value="option1">Male</option>
+                <option value="option2">Female</option>
+                <option value="option3">Other</option>
+            </select>
+            <br />
+
+            <span class="text-danger" asp-validation-for="gender "></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="employeedob " class="form-label">Employee DOB </label>
+            <input asp-for="employeedob " type="date" class="form-control">
+
+
+            <span class="text-danger" asp-validation-for="employeedob "></span>
+        </div>
+
+        <div class="mb-5">
+            <label asp-for="department " class="form-label">Department</label>
+            <br />
+            <select id="dropdown" name="dropdown">
+                <option value="" style="display: none;">Select Department</option>
+                <option value="option1">Accounts</option>
+                <option value="option2">Coustomer Service</option>
+                <option value="option3">Counsiling</option>
+                <option value="option4">Technical</option>
+            </select>
+            <br />
+
+            <span class="text-danger" asp-validation-for="department "></span>
+        </div>
+
+        <div class="mb-6">
+            <label asp-for="designation" class="form-label">Designation </label>
+            <input asp-for="designation " type="text" class="form-control">
+
+            <span class="text-danger" asp-validation-for="designation "></span>
+        </div>
+
+        <div class="mb-7">
+            <label asp-for="mobilenumber " class="form-label">Mobile Number </label>
+            <input asp-for="mobilenumber " type="text" class="form-control" id="mobileInput">
+
+            <span class="text-danger" asp-validation-for="mobilenumber "></span>
+        </div>
+
+        <div class="mb-8">
+            <label asp-for="emailid " class="form-label">Email Id</label>
+            <input asp-for="emailid " type="text" class="form-control">
+
+            <span class="text-danger" asp-validation-for="emailid "></span>
+        </div>
+
+        <div class="mb-9">
+            <label asp-for="panno " class="form-label">Pan No </label>
+            <input asp-for="panno " type="text" class="form-control" id="panInput">
+
+            <span class="text-danger" asp-validation-for="panno "></span>
+        </div>
+
+        <div class="mb-10">
+            <label asp-for="aadharno" class="form-label">Aadhar No </label>
+            <input asp-for="aadharno" type="text" class="form-control" id="aadharInput">
+
+            <span class="text-danger" asp-validation-for="aadharno"></span>
+        </div>
+
+        <div class="mb-11">
+            <label asp-for="dateofissue " class="form-label">Date Of Issue </label>
+            <input asp-for="dateofissue " type="date" class="form-control">
+
+            <span class="text-danger" asp-validation-for="dateofissue "></span>
+        </div>
+
+        <div class="mb-12">
+            <label asp-for="expirydata " class="form-label">Expiry Data </label>
+            <input asp-for="expirydata " type="date" class="form-control">
+
+            <span class="text-danger" asp-validation-for="expirydata "></span>
+        </div>
+
+        <div class="mb-13">
+            <label asp-for="dataofapplication " class="form-label">Data Of Application </label>
+            <input asp-for="dataofapplication " type="date" class="form-control">
+
+            <span class="text-danger" asp-validation-for="dataofapplication "></span>
+        </div>
+
+        <div class="mb-14">
+            <label asp-for="dscno " class="form-label">DSC No </label>
+            <input asp-for="dscno " type="text" class="form-control">
+
+            <span class="text-danger" asp-validation-for="dscno "></span>
+        </div>
+
+        <div class="mb-15">
+            <label asp-for="status  " class="form-label">Status  </label>
+            <br />
+            <select id="dropdown" name="dropdown">
+                <option value="" style="display: none;">Status</option>
+                <option value="option1">Active</option>
+                <option value="option2">Unactive</option>
+            </select>
+            <br />
+
+            <span class="text-danger" asp-validation-for="status  "></span>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                var mobileInput = document.getElementById("mobileInput");
+
+                mobileInput.addEventListener("input", function (event) {
+                    var input = event.target;
+                    var value = input.value.replace(/\s/g, "");
+                    value = value.replace(/\D/g, "");
+                    if (value.length > 10) {
+                        value = value.slice(0, 10);
+                    }
+
+                    input.value = value;
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+                var panInput = document.getElementById("panInput");
+                panInput.addEventListener("input", function (event) {
+                    var input = event.target;
+                    var value = input.value.replace(/\s/g, "");
+                    if (value.length > 10) {
+                        value = value.slice(0, 10);
+                    }
+                    input.value = value;
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+                var aadharInput = document.getElementById("aadharInput");
+                aadharInput.addEventListener("input", function (event) {
+                    var input = event.target;
+                    var value = input.value.replace(/\D/g, "");
+                    var formattedValue = "";
+                    if (value.length > 12) {
+                        value = value.slice(0, 12);
+                    }
+                    for (var i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) {
+                            formattedValue += " ";
+                        }
+                        formattedValue += value[i];
+                    }
+                    input.value = formattedValue;
+                });
+            });
+        </script>
+        @if (TempData["msg"] != null)
+        {
+            <div class="mb-16">
+                @TempData["msg"]
+            </div>
+        }
+
+        <div class="mb-17">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
